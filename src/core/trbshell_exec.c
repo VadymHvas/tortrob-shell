@@ -92,6 +92,8 @@ int trbshell_exec(char *cmd_buffer, char **envp)
         trb_printerr(args[0]);
         trb_printerr(": no such file or command");
         trb_printerr("\n");
+
+        trb_exit(1);
     }
 
     // Wait for the proccess
