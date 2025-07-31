@@ -8,4 +8,4 @@
  * @return 0 if the command was handled successfully,
  *         -1 if the command was not found or failed.
  */
-int trbbuiltin_exec(char **args);
+int trbbuiltin_exec(char **args, char **envp);

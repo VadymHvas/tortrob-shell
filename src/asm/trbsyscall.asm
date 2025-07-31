@@ -10,6 +10,7 @@ global trb_exit
 global trb_fork
 global trb_getuid
 global trb_chdir
+global trb_dup2
 global trb_errno
 
 section .text
@@ -147,6 +148,10 @@ trb_access:
 
 trb_getcwd:
     mov eax, 183        ; sys_getcwd
+    jmp syscall_2
+
+trb_dup2:
+    mov eax, 64         ; sys_dup2
     jmp syscall_2
 
 trb_close:

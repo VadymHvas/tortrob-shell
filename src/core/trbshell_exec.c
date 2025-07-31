@@ -2,8 +2,9 @@
 #include "lib/trbenv.h"
 #include "lib/trbstring.h"
 #include "core/trbcore.h"
-#include "core/builtin/trbbuiltin_exec.h"
 #include "asm/trbsyscall.h"
+#include "core/builtin/trbbuiltin_exec.h"
+#include "core/history/trbhistory.h"
 
 #define PATH_SIZE 1024 // Maximum buffer of PATH size
 
@@ -50,8 +51,12 @@ int trbshell_exec(char *cmd_buffer, char **envp)
     if (!args || !args[0] || args[0][0] == '\n')
         return -1;
 
+    // Write command to history
+    if (trb_write_to_history(args, envp) == -1)
+        trb_printerr("failed to write command into history");
+
     // Try to execute builtin command
-    if (trbbuiltin_exec(args) == 0)
+    if (trbbuiltin_exec(args, envp) == 0)
         return 0;
 
     // fork() proccess to execute external command

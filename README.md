@@ -4,9 +4,10 @@ Minimal shell written in C and Assembly without libc for Linux i386.
 
 ## Features
 - Dynamic prompt.
-- Builtin commands: cd, exit, etc.
+- Builtin commands: cd, exit, history.
 - External command execution via execve.
 - Custom syscall wrappers.
+- Minimal command history
 
 ## Requirements
 - Linux i386 environment
@@ -16,16 +17,17 @@ Minimal shell written in C and Assembly without libc for Linux i386.
 
 ## Limitations
 - No support for pipes, background processes yet.
-- No command history implemented.
 
 ## Build
-```$ make```
+```git clone https://github.com/VadymHvas/tortrob-shell.git```
+```cd tortrob_shell```
+```make```
 
 ## Usage
-```$ ./tortrob_shell```
+```./tortrob_shell```
 
 ## Clean
-```$ make clean```
+```make clean```
 
 ---
 
