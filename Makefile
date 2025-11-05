@@ -3,12 +3,20 @@ CC = gcc
 LD = ld.gold
 
 ASFLAGS = -f elf32
-CFLAGS = -m32 -nostdlib -fno-stack-protector -fno-builtin -Iinclude -gdwarf -Wall -Wextra -O2
+CFLAGS = -m32 -nostdlib -fno-stack-protector -fno-builtin -Iinclude -gdwarf -Wall -Wextra -O0
 LDFLAGS = -m elf_i386
 
 ASM_SRCS = src/asm/start.asm src/asm/trbsyscall.asm
-C_SRCS   = src/main.c src/lib/trbstring.c src/lib/trbstdio.c src/lib/trbenv.c src/core/trbshell_exec.c src/core/trbusr.c src/core/builtin/trbbuiltin_exec.c src/core/builtin/trbbuiltin_cmd.c
-OBJS     = src/asm/start.o src/asm/trbsyscall.o src/main.o src/lib/trbstring.o src/lib/trbstdio.o src/lib/trbenv.o src/core/trbshell_exec.o src/core/trbusr.o src/core/builtin/trbbuiltin_exec.o src/core/builtin/trbbuiltin_cmd.o
+
+C_SRCS   = src/main.c src/lib/trbstring.c src/lib/trbstdio.c src/lib/trbenv.c \
+	src/core/trbshell_exec.c src/core/trbusr.c src/core/builtin/trbbuiltin_exec.c \
+	src/core/builtin/trbbuiltin_cmd.c src/core/history/trbhistory.c src/lib/trbmem.c \
+	src/core/trbcmd.c
+
+OBJS     = src/asm/start.o src/asm/trbsyscall.o src/main.o src/lib/trbstring.o \
+	src/lib/trbstdio.o src/lib/trbenv.o src/core/trbshell_exec.o src/core/trbusr.o \
+	src/core/builtin/trbbuiltin_exec.o src/core/builtin/trbbuiltin_cmd.o \
+	src/core/history/trbhistory.o src/lib/trbmem.o src/core/trbcmd.o
 
 OUTPUT = tortrob_shell
 

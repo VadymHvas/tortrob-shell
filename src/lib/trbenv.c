@@ -5,7 +5,7 @@
 /*
  * Get the value of an environment variable by key.
  * Arguments:
- *  buffer - destination buffer to store the value
+ *  buff - destination buffer to store the value
  *  size   - size of the buffer
  *  key    - environment variable name to search for
  *  envp   - array of environment strings (key=value)
@@ -14,8 +14,8 @@
  *  0  - success, value stored in buffer
  * -1  - failure (invalid args or key not found)
  */
-int trb_getenv(char *buffer, int size, const char *key, char **envp) {
-    if (!buffer || size <= 0 || !key || !envp) 
+int trb_getenv(char *buff, int size, const char *key, char **envp) {
+    if (!buff || size <= 0 || !key || !envp) 
         return -1;
 
     // Iterate over environment variables
@@ -34,11 +34,11 @@ int trb_getenv(char *buffer, int size, const char *key, char **envp) {
             // Copy value into buffer, ensure null termination
             int k = 0;
             while (val[k] && k < size - 1) {
-                buffer[k] = val[k];
+                buff[k] = val[k];
                 k++;
             }
 
-            buffer[k] = 0;  // Null-terminate
+            buff[k] = 0;  // Null-terminate
             return 0;
         }
     }

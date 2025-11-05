@@ -10,6 +10,9 @@ global trb_exit
 global trb_fork
 global trb_getuid
 global trb_chdir
+global trb_dup2
+global trb_pipe
+global trb_mmap
 global trb_errno
 
 section .text
@@ -149,6 +152,10 @@ trb_getcwd:
     mov eax, 183        ; sys_getcwd
     jmp syscall_2
 
+trb_dup2:
+    mov eax, 63         ; sys_dup2
+    jmp syscall_2
+
 trb_close:
     mov eax, 6          ; sys_close
     jmp syscall_1
@@ -168,6 +175,14 @@ trb_fork:
 trb_getuid:
     mov eax, 24         ; sys_getuid
     jmp syscall_void
+
+trb_mmap:
+    mov eax, 90         ; sys_mmap
+    jmp syscall_1
+
+trb_pipe:
+    mov eax, 42         ; sys_pipe
+    jmp syscall_1
 
 section .bss
     trb_errno resd 1    ; storage for errno

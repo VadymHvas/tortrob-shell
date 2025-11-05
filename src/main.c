@@ -3,6 +3,7 @@
 #include "core/trbusr.h"
 #include "core/trbcore.h"
 #include "asm/trbsyscall.h"
+#include "lib/trbmem.h"
 
 #define PROMPT_SIZE     512  // Maximum prompt length
 #define CMD_BUFFER_SIZE 2048 // Maximum buffer size
@@ -16,7 +17,7 @@ static char trb_prompt[PROMPT_SIZE];
  * Startup banner: display when shell launch.
  * Philosophy: minimalism, C + asm, zero libc, maximum tortrobs.
  */
-static const char *trb_banner = "[_____________Welcome to Tortrob shell v0.0.1_____________]\n"
+static const char *trb_banner = "[_____________Welcome to Tortrob shell v1.0.0_____________]\n"
                                 "[_________Written in pure C and Assembly, no libc_________]\n\n";
 
 /*

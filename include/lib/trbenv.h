@@ -1,6 +1,6 @@
 #pragma once
 
-/*
+/**
  * Retrieve the value of an environment variable by key.
  *
  * @param buffer Destination buffer to store the value.

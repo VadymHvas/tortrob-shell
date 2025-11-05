@@ -1,6 +1,6 @@
 #pragma once
 
-/*
+/**
  * Generate the shell prompt string dynamically.
  *
  * Constructs the prompt (e.g. user@host current_dir $/#)
